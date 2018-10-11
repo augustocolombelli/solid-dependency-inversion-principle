@@ -14,15 +14,29 @@ In our example, we have TaxCalculator responsible for applying all taxes in valu
 private List<Tax> taxes;
 	
 public TaxCalculator(List<Tax> taxes) {
-	this.taxes = taxes;
+  this.taxes = taxes;
 }
 	
 public Double calc(Double value) {
-	Double taxValue = 0.0;
-	for(Tax tax : taxes) {
-		taxValue += tax.calc(value);
-	}
-	return taxValue;
+  Double taxValue = 0.0;
+  for(Tax tax : taxes) {
+    taxValue += tax.calc(value);
+  }
+  return taxValue;
+}
+```
+In real life, it is possible to have a list of taxes for a Product and a different list of taxes for a Service. In our example, we can use TaxCalculator in both, it is only necessary to define which taxes to apply.
+```
+private static void calcTaxToService() {
+  List<Tax> serviceTaxes = new ArrayList<Tax>();
+  serviceTaxes.add(new TaxAImpl());
+  serviceTaxes.add(new TaxCImpl());
+}
+
+private static void calcTaxToProduct() {
+  List<Tax> productTaxes = new ArrayList<Tax>();
+  productTaxes.add(new TaxAImpl());
+  productTaxes.add(new TaxBImpl());
 }
 ```
 
