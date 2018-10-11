@@ -58,6 +58,6 @@ private static void calcTaxToSpecialProduct() {
 ```
 
 #### Class Diagram
-
+![My image](https://github.com/augustocolombelli/solid-dependency-inversion-principle/blob/master/ClassDiagram.png)
 
 
