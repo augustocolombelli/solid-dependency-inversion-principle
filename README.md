@@ -40,6 +40,22 @@ private static void calcTaxToProduct() {
 }
 ```
 
+This dependency only with abstractions, allows to use TaxCalculator in different parts of our system. Imagine if the user wants another feature in our system that calculates the tax for an especial product, for example, a medicine or a weapon. We can create a new concrete class that implements Tax with the new rule, after which we call TaxCalculator using this new Tax.
+```
+public class TaxSpecialImpl implements Tax {
+
+  public Double calc(Double value) {
+    return value * 0.01;
+  }
+}
+
+```
+```
+private static void calcTaxToSpecialProduct() {
+  List<Tax> productTaxes = new ArrayList<Tax>();
+  productTaxes.add(new TaxSpecialImpl());
+}
+```
 
 #### Class Diagram
 
